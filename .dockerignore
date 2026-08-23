@@ -1,0 +1,7 @@
+.git
+.github
+build
+nbproject/private
+test
+*.log
+README.md

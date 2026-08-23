@@ -1,0 +1,13 @@
+/* Fondo compartido para la agenda de enfermería. */
+html, body {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f4f7fb;
+    background-image:
+        radial-gradient(circle at 20px 20px, rgba(214, 51, 75, .13) 0 3px, transparent 3.6px),
+        radial-gradient(circle at 55px 55px, rgba(7, 87, 185, .13) 0 3px, transparent 3.6px);
+    background-size: 70px 70px;
+}

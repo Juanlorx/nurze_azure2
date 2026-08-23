@@ -1,0 +1,2 @@
+/* El formulario de agenda se muestra solo al pulsar “Agendar cita”. */
+.formulario-cita-oculto { display: none; }

@@ -1,0 +1,49 @@
+name: Validar panel de usuarios
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "web/Vista/Tabla_Usuarios.jsp"
+      - "web/Ccs/Style_Tablas.css"
+      - "src/java/Servlet/Tabla_Usuarios.java"
+      - ".github/workflows/usuarios.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar-panel:
+    name: Revisar cambios del panel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar que el ID no sea visible en la tabla
+        run: |
+          ! grep -q '<th>ID</th>' web/Vista/Tabla_Usuarios.jsp
+          ! grep -q '<td>${u.id_Usuarios}</td>' web/Vista/Tabla_Usuarios.jsp
+          ! grep -q 'accion=editar&id=' web/Vista/Tabla_Usuarios.jsp
+          ! grep -q 'accion=eliminar&id=' web/Vista/Tabla_Usuarios.jsp
+
+      - name: Verificar formulario desplegable
+        run: |
+          grep -q 'class="panel-formulario"' web/Vista/Tabla_Usuarios.jsp
+          grep -q 'class="boton-desplegar"' web/Vista/Tabla_Usuarios.jsp
+          grep -q 'Crear nuevo usuario' web/Vista/Tabla_Usuarios.jsp
+
+      - name: Verificar acciones por POST
+        run: |
+          grep -q 'method="post"' web/Vista/Tabla_Usuarios.jsp
+          grep -q 'name="accion" value="editar"' web/Vista/Tabla_Usuarios.jsp
+          grep -q 'name="accion" value="eliminar"' web/Vista/Tabla_Usuarios.jsp
+          grep -q '"eliminar".equals(accion)' src/java/Servlet/Tabla_Usuarios.java
+
+      - name: Verificar estilos de acciones
+        run: |
+          grep -q '.editar' web/Ccs/Style_Tablas.css
+          grep -q '.eliminar' web/Ccs/Style_Tablas.css
+          grep -q '.acciones-tabla' web/Ccs/Style_Tablas.css

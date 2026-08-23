@@ -1,0 +1,855 @@
+/* ================= RESET ================= */
+
+/* Paleta compartida del panel administrativo: patrón clínico rojo y azul. */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+
+body{
+
+    background-color:#f7f9fc;
+    background-image:radial-gradient(circle at 18px 18px, rgba(220,38,38,.12) 0 3px, transparent 4px), radial-gradient(circle at 48px 48px, rgba(0,78,180,.12) 0 3px, transparent 4px);
+    background-size:66px 66px;
+
+}
+
+.subtitulo-gestion{ text-align:center; color:#475569; margin:-12px 0 22px; }
+.enfermeria-sidebar .logo-section p{ color:#b00020; font-weight:700; font-size:13px; }
+
+.layout-admin{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+.sidebar{
+
+    width:260px;
+
+    min-height:100vh;
+
+    background:#ffffff;
+
+    border-right:1px solid #e5e7eb;
+
+    padding:25px;
+
+}
+
+.logo-section{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.logo-section img{
+
+    width:90px;
+
+    margin-bottom:10px;
+
+}
+
+.logo-section h2{
+
+    color:#0c6cf2;
+
+}
+
+.menu{
+
+    list-style:none;
+
+}
+
+.menu li{
+
+    margin-bottom:12px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.menu li a{
+
+    display:block;
+
+    padding:15px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:600;
+
+}
+
+.menu li:hover{
+
+    background:#edf4ff;
+
+}
+
+.menu li.active{
+
+    background:#0c6cf2;
+
+}
+
+.menu li.active a{
+
+    color:white;
+
+}
+
+.contenido-admin{
+
+    flex:1;
+
+    min-width:0;
+
+    padding:30px;
+
+}
+
+
+
+/* ================= HEADER ================= */
+
+
+.header{
+
+    width:100%;
+
+    height:120px;
+
+    background:#004eb4;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 5%;
+
+}
+
+
+
+/* LOGO */
+
+.logo img{
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
+}
+
+
+
+/* MENU */
+
+.menu ul{
+
+    display:flex;
+
+    gap:60px;
+
+    list-style:none;
+
+}
+
+
+
+.menu a{
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    text-decoration:underline;
+
+}
+
+
+
+/* SESION */
+
+
+.Sesion{
+
+    background:linear-gradient(
+    to right,
+    #004eb4 50%,
+    #e50914 50%
+    );
+
+    border:2px solid black;
+
+    border-radius:40px;
+
+    padding:12px 35px;
+
+    color:white;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+}
+
+
+
+
+
+/* ================= CONTENIDO ================= */
+
+
+.contenedor{
+
+    width:100%;
+
+    margin:0 auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+
+
+.contenedor h1{
+
+    text-align:center;
+
+    color:#004eb4;
+
+    margin-bottom:10px;
+
+    font-size:35px;
+
+}
+
+
+
+.contenedor h2{
+
+    text-align:center;
+
+    color:#004eb4;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.contador{
+
+    text-align:center;
+
+    font-size:18px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+/* ================= FORMULARIO ================= */
+
+.panel-formulario{
+
+    width:min(500px, 100%);
+
+    margin:0 auto;
+
+}
+
+.panel-formulario[open]{
+
+    margin-bottom:15px;
+
+}
+
+.formulario label{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-weight:600;
+    color:#334155;
+}
+
+.fila-campos{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:12px;
+}
+
+.formulario textarea{
+    min-height:88px;
+    resize:vertical;
+}
+
+.selector-medicamentos{
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    padding:12px;
+    display:grid;
+    gap:8px;
+}
+
+.selector-medicamentos legend{
+    font-weight:700;
+    color:#004eb4;
+    padding:0 5px;
+}
+
+.selector-medicamentos .opcion-medicamento{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:8px;
+    font-weight:400;
+}
+
+.selector-medicamentos input{
+    width:auto;
+}
+
+.estado{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:99px;
+    font-weight:700;
+    font-size:12px;
+}
+
+.estado-Activo{ background:#dcfce7; color:#166534; }
+.estado-Suspendido{ background:#fee2e2; color:#991b1b; }
+.estado-Finalizado{ background:#e0e7ff; color:#3730a3; }
+
+@media (max-width: 640px){
+    .fila-campos{ grid-template-columns:1fr; }
+}
+
+.boton-desplegar{
+
+    width:100%;
+
+    list-style:none;
+
+    background:#004eb4;
+
+    color:white;
+
+    padding:14px 22px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 18px rgba(0,78,180,.2);
+
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+
+}
+
+.boton-desplegar::-webkit-details-marker{
+
+    display:none;
+
+}
+
+.boton-desplegar:hover{
+
+    background:#003580;
+
+    transform:translateY(-1px);
+
+    box-shadow:0 10px 22px rgba(0,78,180,.28);
+
+}
+
+
+.formulario{
+
+
+    width:100%;
+
+    margin:15px auto 0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    background:#f9fbff;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+
+}
+
+
+
+.formulario label{
+
+    font-weight:bold;
+
+    color:#004eb4;
+
+}
+
+
+
+.formulario input,
+.formulario select{
+
+
+    width:100%;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+
+    font-size:16px;
+
+}
+
+
+
+.formulario input:focus{
+
+    outline:none;
+
+    border:2px solid #004eb4;
+
+}
+
+.formulario select:focus{
+
+    outline:none;
+
+    border:2px solid #004eb4;
+
+}
+
+.aviso-admin{
+
+    width:min(680px, 100%);
+
+    margin:0 auto 24px;
+
+    padding:16px 18px;
+
+    border-radius:12px;
+
+    background:#fff8e5;
+
+    border:1px solid #ffd978;
+
+    color:#765100;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+.formulario button{
+
+
+    background:#004eb4;
+
+    color:white;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+
+}
+
+
+
+.formulario button:hover{
+
+    background:#003580;
+
+}
+
+
+
+
+.boton-secundario{
+
+
+    background:#777;
+
+    color:white;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+/* ================= TABLA ================= */
+
+
+.tabla{
+
+
+    width:100%;
+
+    margin-top:35px;
+
+    border-collapse:collapse;
+
+
+}
+
+
+
+.tabla th{
+
+
+    background:#004eb4;
+
+    color:white;
+
+    padding:15px;
+
+
+}
+
+
+
+.tabla td{
+
+
+    padding:12px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+
+}
+
+
+
+.tabla tr:hover{
+
+
+    background:#f1f7ff;
+
+
+}
+
+
+
+
+
+/* ================= BOTONES TABLA ================= */
+
+
+.editar{
+
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:78px;
+
+    background:#eaf3ff;
+
+    padding:9px 14px;
+
+    border:1px solid #9cc7ff;
+
+    border-radius:8px;
+
+    color:#00408f;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    font-family:Arial,sans-serif;
+
+    cursor:pointer;
+
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+
+}
+
+
+
+.eliminar{
+
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:78px;
+
+    background:#fff0f1;
+
+    padding:9px 14px;
+
+    border:1px solid #ffb3ba;
+
+    border-radius:8px;
+
+    color:#b00020;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    font-family:Arial,sans-serif;
+
+    cursor:pointer;
+
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+
+}
+
+.editar:hover,
+.eliminar:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:0 6px 14px rgba(0,0,0,.12);
+
+}
+
+.editar:hover{
+
+    background:#d8eaff;
+
+}
+
+.eliminar:hover{
+
+    background:#ffe0e3;
+
+}
+
+.acciones-tabla{
+
+    white-space:nowrap;
+
+}
+
+.acciones-tabla form{
+
+    display:inline-block;
+
+}
+
+.acciones-tabla a,
+.acciones-tabla button{
+
+    margin:4px;
+
+}
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer{
+
+
+    background:#004eb4;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:50px;
+
+
+}
+
+
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+@media(max-width:900px){
+
+
+.layout-admin{
+
+    flex-direction:column;
+
+}
+
+.sidebar{
+
+    width:100%;
+
+    min-height:auto;
+
+    padding:25px;
+
+}
+
+.logo-section{
+
+    margin-bottom:25px;
+
+}
+
+.logo-section img{
+
+    width:80px;
+
+}
+
+.menu{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+
+    gap:8px;
+
+}
+
+.contenido-admin{
+
+    padding:18px;
+
+}
+
+
+.header{
+
+
+    flex-direction:column;
+
+    height:auto;
+
+    gap:20px;
+
+
+}
+
+
+
+.menu ul{
+
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+
+}
+
+
+
+.formulario{
+
+
+    width:100%;
+
+
+}
+
+
+
+.tabla{
+
+
+    font-size:13px;
+
+
+}
+
+
+}
