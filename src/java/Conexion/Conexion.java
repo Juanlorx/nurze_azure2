@@ -30,7 +30,9 @@ public class Conexion {
         String sslMode = entorno("DB_SSL_MODE", "PREFERRED");
         return "jdbc:mysql://" + host + ":" + puerto + "/" + baseDatos
                 + "?sslMode=" + sslMode
-                + "&serverTimezone=UTC&connectTimeout=10000&socketTimeout=30000";
+                + "&serverTimezone=UTC&connectTimeout=10000&socketTimeout=30000"
+                + "&trustCertificateKeyStoreUrl=file:///opt/java/openjdk/lib/security/cacerts"
+                + "&trustCertificateKeyStorePassword=changeit";
     }
 
     private static String entorno(String nombre, String valorPorDefecto) {
