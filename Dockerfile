@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:17-jdk-jammy
 
 ARG GLASSFISH_VERSION=7.0.21
 ENV GLASSFISH_HOME=/opt/glassfish7 \
