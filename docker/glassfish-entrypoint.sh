@@ -10,6 +10,9 @@ ASADMIN="${GLASSFISH_HOME}/bin/asadmin"
 "${ASADMIN}" deploy --force=true --name nurse --contextroot /nurse "${APP_WAR}"
 "${ASADMIN}" set \
   configs.config.server-config.http-service.virtual-server.server.default-web-module=nurse
+"${ASADMIN}" create-jvm-options \
+  "-Djavax.net.ssl.trustStore=/opt/java/openjdk/lib/security/cacerts" \
+  "-Djavax.net.ssl.trustStorePassword=changeit"
 "${ASADMIN}" list-applications | grep -q '^nurse'
 "${ASADMIN}" stop-domain
 
