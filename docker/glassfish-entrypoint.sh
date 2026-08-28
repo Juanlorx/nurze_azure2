@@ -12,10 +12,16 @@ ASADMIN="${GLASSFISH_HOME}/bin/asadmin"
   configs.config.server-config.http-service.virtual-server.server.default-web-module=nurse
 "${ASADMIN}" delete-jvm-options \
   '-Djavax.net.ssl.trustStore=${com.sun.aas.instanceRoot}/config/keystore.jks' || true
+"${ASADMIN}" delete-jvm-options \
+  '-Djavax.net.ssl.keyStore=${com.sun.aas.instanceRoot}/config/keystore.jks' || true
 "${ASADMIN}" create-jvm-options \
   "-Djavax.net.ssl.trustStore=/opt/java/openjdk/lib/security/cacerts"
 "${ASADMIN}" create-jvm-options \
   "-Djavax.net.ssl.trustStorePassword=changeit"
+"${ASADMIN}" create-jvm-options \
+  "-Djavax.net.ssl.keyStore=/opt/java/openjdk/lib/security/cacerts"
+"${ASADMIN}" create-jvm-options \
+  "-Djavax.net.ssl.keyStorePassword=changeit"
 "${ASADMIN}" list-applications | grep -q '^nurse'
 "${ASADMIN}" stop-domain
 
