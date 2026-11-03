@@ -50,15 +50,14 @@
 
                       <div class="form-group">
 
-    <label for="txtNombre">Nombre</label>
-
-    <input
-        type="text"
-        id="txtNombre"
-        name="txtNombre"
-        required
-    >
-
+            <label for="txtNombre">Nombre</label>
+            
+            <input
+                type="text"
+                id="txtNombre"
+                name="txtNombre"
+                required
+            >
 </div>
 
                             <label for="apellido">
