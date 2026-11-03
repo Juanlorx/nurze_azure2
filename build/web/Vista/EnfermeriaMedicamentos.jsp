@@ -126,14 +126,20 @@
 
                         <h2>Inventario de medicamentos</h2>
 
-                          <input
-                              id="buscador-medicamentos"
-                              class="buscador"
-                              data-filtro="tabla-medicamentos"
-                              type="search"
-                              placeholder="⌕ Buscar medicamento o lote"
-                          >
+                     <div class="buscador-contenedor">
 
+                        <label for="buscador-medicamentos">
+                            Buscar medicamento o lote
+                        </label>
+                    
+                        <input
+                            id="buscador-medicamentos"
+                            class="buscador"
+                            data-filtro="tabla-medicamentos"
+                            type="search"
+                            placeholder="⌕ Buscar medicamento o lote"
+                        >
+                    
                     </div>
 
                     <!-- Tabla de medicamentos -->
