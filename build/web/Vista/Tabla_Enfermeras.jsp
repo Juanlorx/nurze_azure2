@@ -82,8 +82,9 @@
                                    name="roles_idRoles"
                                    value="${rolEnfermeraId}">
 
-
-                          <input
+                            
+                            <label for="nombres">Nombres</label>
+                            <input
                                 type="text"
                                 id="nombres"
                                 name="nombres"
@@ -92,6 +93,7 @@
                                 required
                             >
                             
+                            <label for="apellidos">Apellidos</label>
                             <input
                                 type="text"
                                 id="apellidos"
@@ -101,6 +103,7 @@
                                 required
                             >
                             
+                            <label for="identificacion">Identificación</label>
                             <input
                                 type="text"
                                 id="identificacion"
@@ -110,6 +113,7 @@
                                 required
                             >
                             
+                            <label for="telefono">Teléfono</label>
                             <input
                                 type="text"
                                 id="telefono"
@@ -119,6 +123,7 @@
                                 required
                             >
                             
+                            <label for="direccion">Dirección</label>
                             <input
                                 type="text"
                                 id="direccion"
@@ -128,6 +133,7 @@
                                 required
                             >
                             
+                            <label for="correo">Correo electrónico</label>
                             <input
                                 type="email"
                                 id="correo"
@@ -137,15 +143,16 @@
                                 required
                             >
                             
+                            <label for="clave">Clave</label>
                             <input
                                 type="password"
                                 id="clave"
                                 name="clave"
                                 placeholder="Clave"
-                                value="${registroEditar.clave}"
                                 required
                             >
                             
+                            <label for="rethus">Rethus</label>
                             <input
                                 type="text"
                                 id="rethus"
