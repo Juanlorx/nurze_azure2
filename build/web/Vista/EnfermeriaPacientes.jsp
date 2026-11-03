@@ -128,15 +128,21 @@
                         <h2>Directorio de pacientes</h2>
 
                         <!-- Buscador de pacientes -->
-                        <input
-                            id="buscador-pacientes"
-                            class="buscador"
-                            data-filtro="tabla-pacientes"
-                            type="search"
-                            placeholder="⌕ Buscar por nombre o documento"
-                        >
+                                               <div class="buscador-contenedor">
+                        
+                            <label for="buscador-pacientes">
+                                Buscar paciente por nombre o documento
+                            </label>
+                        
+                            <input
+                                id="buscador-pacientes"
+                                class="buscador"
+                                data-filtro="tabla-pacientes"
+                                type="search"
+                                placeholder="⌕ Buscar por nombre o documento"
+                            >
 
-                    </div>
+</div>
 
                     <!-- Tabla de pacientes -->
                     <div class="tabla-wrap">
