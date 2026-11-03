@@ -76,22 +76,36 @@
 
         </c:choose>
 
-        <input type="date"
-               name="fecha_nacimiento"
-               value="${registroEditar.fecha_nacimiento}"
-               required>
-
-        <input type="text"
-               name="diagnostico"
-               placeholder="Diagnóstico"
-               value="${registroEditar.diagnostico}"
-               required>
-
-        <input type="number"
-               name="usuario"
-               placeholder="ID Usuario"
-               value="${registroEditar.usuariosIdUsuarios}"
-               required>
+                               <input
+                            id="fecha_nacimiento"
+                            type="date"
+                            name="fecha_nacimiento"
+                            value="${registroEditar.fecha_nacimiento}"
+                            required
+                        >
+                        
+                        <input
+                            id="diagnostico"
+                            type="text"
+                            name="diagnostico"
+                            placeholder="Diagnóstico"
+                            value="${registroEditar.diagnostico}"
+                            required
+                        >
+                        
+                        <input
+                            id="usuario"
+                            type="number"
+                            name="usuario"
+                            placeholder="ID Usuario"
+                            value="${registroEditar.usuariosIdUsuarios}"
+                            required
+                        >
+                                <input type="number"
+                                       name="usuario"
+                                       placeholder="ID Usuario"
+                                       value="${registroEditar.usuariosIdUsuarios}"
+                                       required>
 
         <c:choose>
 
