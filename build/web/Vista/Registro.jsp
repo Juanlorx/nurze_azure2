@@ -48,14 +48,18 @@
               
       
 
-                       <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text"
-                accept=""name="txtNombre"
-                required>
-                       </div>
+                      <div class="form-group">
 
-                        <div class="form-group">
+    <label for="txtNombre">Nombre</label>
+
+    <input
+        type="text"
+        id="txtNombre"
+        name="txtNombre"
+        required
+    >
+
+</div>
 
                             <label for="apellido">
                                 Apellido
@@ -84,7 +88,7 @@
                                 </option>
 
                                 <option value="CC">
-                                    Cédula de ciudadanía
+                                    CÃ©dula de ciudadanÃ­a
                                 </option>
 
                                 <option value="TI">
@@ -96,7 +100,7 @@
                                 </option>
 
                                 <option value="CE">
-                                    Cédula extranjera
+                                    CÃ©dula extranjera
                                 </option>
 
                             </select>
@@ -106,7 +110,7 @@
                         <div class="form-group">
 
                             <label for="documento">
-                                Número de documento
+                                NÃºmero de documento
                             </label>
 
                             <input type="text"
@@ -120,13 +124,13 @@
                   <div class="form-group">
 
     <label for="telefono">
-        Teléfono
+        TelÃ©fono
     </label>
 
     <input type="text"
            id="telefono"
            name="txtTelefono"
-           placeholder="Ingrese su teléfono"
+           placeholder="Ingrese su telÃ©fono"
            required>
 
 </div>
@@ -134,13 +138,13 @@
 <div class="form-group">
 
     <label for="direccion">
-        Dirección
+        DirecciÃ³n
     </label>
 
     <input type="text"
            id="direccion"
            name="txtDireccion"
-           placeholder="Ingrese su dirección"
+           placeholder="Ingrese su direcciÃ³n"
            required>
 
 </div>
@@ -175,13 +179,13 @@
                         <div class="form-group">
 
                             <label for="password">
-                                Contraseña
+                                ContraseÃ±a
                             </label>
 
                             <input type="password"
                                    id="password"
                                    name="txtPassword"
-                                   placeholder="Ingrese su contraseña"
+                                   placeholder="Ingrese su contraseÃ±a"
                                    required>
 
                         </div>
@@ -196,7 +200,7 @@
 
                                 <label for="politica">
 
-                                    Acepto la política de tratamiento de datos personales
+                                    Acepto la polÃ­tica de tratamiento de datos personales
 
                                 </label>
 
@@ -219,7 +223,7 @@
                     <a href="${pageContext.request.contextPath}/Index.jsp"
                        class="back-login">
 
-                        Volver al inicio de sesión
+                        Volver al inicio de sesiÃ³n
 
                     </a>
 
