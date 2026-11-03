@@ -83,53 +83,77 @@
                                    value="${rolEnfermeraId}">
 
 
-                            <input type="text"
-                                   name="nombres"
-                                   placeholder="Nombres"
-                                   value="${registroEditar.nombres}"
-                                   required>
-
-
-                            <input type="text"
-                                   name="apellidos"
-                                   placeholder="Apellidos"
-                                   value="${registroEditar.apellidos}"
-                                   required>
-
-
-                            <input type="text"
-                                   name="identificacion"
-                                   placeholder="Identificación"
-                                   value="${registroEditar.identificacion}"
-                                   required>
-
-
-                            <input type="text"
-                                   name="telefono"
-                                   placeholder="Teléfono"
-                                   value="${registroEditar.telefono}"
-                                   required>
-
-
-                            <input type="text"
-                                   name="direccion"
-                                   placeholder="Dirección"
-                                   value="${registroEditar.direccion}"
-                                   required>
-
-
-                            <input type="email"
-                                   name="correo"
-                                   placeholder="Correo"
-                                   value="${registroEditar.correo}"
-                                   required>
-
-
-                            <input type="password"
-                                   name="clave"
-                                   placeholder="Clave"
-                                   value="${registroEditar.clave}"
-                                   required>
+                          <input
+                                type="text"
+                                id="nombres"
+                                name="nombres"
+                                placeholder="Nombres"
+                                value="${registroEditar.nombres}"
+                                required
+                            >
+                            
+                            <input
+                                type="text"
+                                id="apellidos"
+                                name="apellidos"
+                                placeholder="Apellidos"
+                                value="${registroEditar.apellidos}"
+                                required
+                            >
+                            
+                            <input
+                                type="text"
+                                id="identificacion"
+                                name="identificacion"
+                                placeholder="Identificación"
+                                value="${registroEditar.identificacion}"
+                                required
+                            >
+                            
+                            <input
+                                type="text"
+                                id="telefono"
+                                name="telefono"
+                                placeholder="Teléfono"
+                                value="${registroEditar.telefono}"
+                                required
+                            >
+                            
+                            <input
+                                type="text"
+                                id="direccion"
+                                name="direccion"
+                                placeholder="Dirección"
+                                value="${registroEditar.direccion}"
+                                required
+                            >
+                            
+                            <input
+                                type="email"
+                                id="correo"
+                                name="correo"
+                                placeholder="Correo"
+                                value="${registroEditar.correo}"
+                                required
+                            >
+                            
+                            <input
+                                type="password"
+                                id="clave"
+                                name="clave"
+                                placeholder="Clave"
+                                value="${registroEditar.clave}"
+                                required
+                            >
+                            
+                            <input
+                                type="text"
+                                id="rethus"
+                                name="rethus"
+                                placeholder="Rethus"
+                                value="${registroEditar.rethus}"
+                                required
+                            >
 
 
                             <input type="text"
