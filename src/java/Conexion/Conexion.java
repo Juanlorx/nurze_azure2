@@ -4,77 +4,42 @@ package Conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Conexion {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-
-    private static String obtenerVariable(String nombre) {
-        String valor = System.getenv(nombre);
-
-        if (valor == null || valor.trim().isEmpty()) {
-            throw new IllegalStateException(
-                "Falta configurar la variable de entorno: " + nombre
-            );
-        }
-
-        return valor.trim();
-    }
-
-    private static String obtenerUrl() {
-
-        String url = System.getenv("DB_URL");
-
-        if (url != null && !url.trim().isEmpty()) {
-            return url.trim();
-        }
-
-        String host = obtenerVariable("DB_HOST");
-        String puerto = obtenerVariable("DB_PORT");
-        String baseDatos = obtenerVariable("DB_NAME");
-
-        return "jdbc:mysql://" + host + ":" + puerto + "/" + baseDatos
-                + "?sslMode=REQUIRED"
-                + "&serverTimezone=UTC"
-                + "&connectTimeout=10000"
-                + "&socketTimeout=30000";
-    }
 
     public Connection getConexion() {
 
         try {
             Class.forName(DRIVER);
 
-            String url = obtenerUrl();
-            String usuario = obtenerVariable("DB_USER");
-            String password = obtenerVariable("DB_PASSWORD");
+            Properties propiedades = new Properties();
 
-            Connection con = DriverManager.getConnection(
-                url,
-                usuario,
-                password
+            propiedades.load(
+                Conexion.class.getResourceAsStream("/database.properties")
             );
 
-            System.out.println("Conexión a la base de datos establecida.");
+            String url = propiedades.getProperty("db.url");
+            String usuario = propiedades.getProperty("db.user");
+            String password = propiedades.getProperty("db.password");
 
-            return con;
+            if (url == null || usuario == null || password == null) {
+                throw new IllegalStateException(
+                    "Configuración de base de datos incompleta."
+                );
+            }
 
-        } catch (ClassNotFoundException e) {
+            return DriverManager.getConnection(url, usuario, password);
 
-            System.err.println("No se encontró el driver de MySQL.");
-            e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Error de conexión con la base de datos.");
+            return null;
 
-        } catch (SQLException e) {
-
-            System.err.println("Error al conectar con MySQL.");
-            e.printStackTrace();
-
-        } catch (IllegalStateException e) {
-
-            System.err.println(e.getMessage());
-
+        } catch (Exception e) {
+            System.err.println("No se pudo cargar la configuración.");
+            return null;
         }
-
-        return null;
     }
 }
