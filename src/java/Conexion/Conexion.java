@@ -51,12 +51,13 @@ public class Conexion {
 
             System.out.println("Conexión a la base de datos establecida.");
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+       } catch (ClassNotFoundException e) {
+    LOGGER.log(Level.SEVERE, "Error: No se encontró el controlador JDBC.", e);
 
-        return con;
-    }
+} catch (SQLException e) {
+    LOGGER.log(Level.SEVERE, "Error al conectar con la base de datos.", e);
+}
+
+return con;
+}
 }
