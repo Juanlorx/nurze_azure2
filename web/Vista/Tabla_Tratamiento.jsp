@@ -103,12 +103,13 @@
 
                     <!-- DESCRIPCIÓN -->
 
-                    <input type="text"
-                           name="descripcion"
-                           placeholder="Nombre o diagnóstico del tratamiento"
-                           value="${registroEditar.descripcion}"
-                           required>
-
+                  <label for="descripcion">Descripción del tratamiento</label>
+                <input type="text"
+                       id="descripcion"
+                       name="descripcion"
+                       placeholder="Nombre o diagnóstico del tratamiento"
+                       value="${registroEditar.descripcion}"
+                       required>
 
                     <!-- FECHAS -->
 
