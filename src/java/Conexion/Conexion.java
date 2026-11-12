@@ -1,3 +1,4 @@
+
 package Conexion;
 
 import java.sql.Connection;
@@ -8,53 +9,72 @@ public class Conexion {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    /*
-     * Producción (Azure): configura DB_HOST, DB_PORT, DB_NAME, DB_USER,
-     * DB_PASSWORD y DB_SSL_MODE como variables de entorno. DB_URL permite
-     * reemplazar la URL completa si se requiere una configuración especial.
-     * Los valores por defecto conservan el funcionamiento local con XAMPP.
-     */
-    private static final String URL = obtenerUrl();
-    private static final String USER = entorno("DB_USER", "root");
-    private static final String PASSWORD = entorno("DB_PASSWORD", "");
+    private static String obtenerVariable(String nombre) {
+        String valor = System.getenv(nombre);
 
-    private static String obtenerUrl() {
-        String urlCompleta = System.getenv("DB_URL");
-        if (urlCompleta != null && !urlCompleta.trim().isEmpty()) {
-            return urlCompleta.trim();
+        if (valor == null || valor.trim().isEmpty()) {
+            throw new IllegalStateException(
+                "Falta configurar la variable de entorno: " + nombre
+            );
         }
 
-        String host = entorno("DB_HOST", "localhost");
-        String puerto = entorno("DB_PORT", "3307");
-        String baseDatos = entorno("DB_NAME", "nurse");
-        String sslMode = entorno("DB_SSL_MODE", "PREFERRED");
-        return "jdbc:mysql://" + host + ":" + puerto + "/" + baseDatos
-                + "?sslMode=" + sslMode
-                + "&serverTimezone=UTC&connectTimeout=10000&socketTimeout=30000";
+        return valor.trim();
     }
 
-    private static String entorno(String nombre, String valorPorDefecto) {
-        String valor = System.getenv(nombre);
-        return valor == null || valor.trim().isEmpty() ? valorPorDefecto : valor.trim();
+    private static String obtenerUrl() {
+
+        String url = System.getenv("DB_URL");
+
+        if (url != null && !url.trim().isEmpty()) {
+            return url.trim();
+        }
+
+        String host = obtenerVariable("DB_HOST");
+        String puerto = obtenerVariable("DB_PORT");
+        String baseDatos = obtenerVariable("DB_NAME");
+
+        return "jdbc:mysql://" + host + ":" + puerto + "/" + baseDatos
+                + "?sslMode=REQUIRED"
+                + "&serverTimezone=UTC"
+                + "&connectTimeout=10000"
+                + "&socketTimeout=30000";
     }
 
     public Connection getConexion() {
 
-        Connection con = null;
-
         try {
             Class.forName(DRIVER);
 
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            String url = obtenerUrl();
+            String usuario = obtenerVariable("DB_USER");
+            String password = obtenerVariable("DB_PASSWORD");
+
+            Connection con = DriverManager.getConnection(
+                url,
+                usuario,
+                password
+            );
 
             System.out.println("Conexión a la base de datos establecida.");
 
+            return con;
+
         } catch (ClassNotFoundException e) {
+
+            System.err.println("No se encontró el driver de MySQL.");
             e.printStackTrace();
+
         } catch (SQLException e) {
+
+            System.err.println("Error al conectar con MySQL.");
             e.printStackTrace();
+
+        } catch (IllegalStateException e) {
+
+            System.err.println(e.getMessage());
+
         }
 
-        return con;
+        return null;
     }
 }
